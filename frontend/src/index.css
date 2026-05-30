@@ -23,6 +23,28 @@ body {
   z-index: 0;
 }
 
+/* Map marker-cluster count badge (see MapView.tsx). */
+.roost-cluster-wrap {
+  background: transparent;
+  border: 0;
+}
+.roost-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  border: 2px solid #ffffff;
+  background: rgba(120, 53, 15, 0.9);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
 @layer components {
   .btn {
     @apply inline-flex items-center justify-center gap-1.5 rounded-md border border-roost-line
