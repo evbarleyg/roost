@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+backend/.env
+
+# Node
+node_modules/
+dist/
+*.log
+
+# OS
+.DS_Store
+
+# Roost data: db.json IS meant to be git-trackable (flat JSON store). Uncomment
+# the next line if you'd rather keep your listings out of git.
+# backend/data/db.json
+backend/data/*.json.tmp
+
+# Pre-change snapshots are noise in git; db.json itself is the tracked source.
+backend/data/db.backup.*.json
