@@ -3,7 +3,6 @@ import { useEffect, useMemo, type ReactNode } from "react";
 import { CardGallery } from "./components/CardGallery";
 import { DetailDrawer } from "./components/DetailDrawer";
 import { FilterRail } from "./components/FilterRail";
-import { IntakeDialog } from "./components/IntakeDialog";
 import { MapView } from "./components/MapView";
 import { RankTable } from "./components/RankTable";
 import { SettingsDialog } from "./components/SettingsDialog";
@@ -21,10 +20,7 @@ export default function App() {
   const filter = useStore((s) => s.filter);
   const view = useStore((s) => s.view);
   const setView = useStore((s) => s.setView);
-  const openIntake = useStore((s) => s.openIntake);
   const openSettings = useStore((s) => s.openSettings);
-  const createListing = useStore((s) => s.createListing);
-  const select = useStore((s) => s.select);
 
   useEffect(() => {
     init();
@@ -35,11 +31,6 @@ export default function App() {
     return listings.filter((l) => passes(l, settings, filter, catMap));
   }, [listings, settings, filter, catMap]);
 
-  const addBlank = async () => {
-    const created = await createListing({ name: "New listing" });
-    select(created.id);
-  };
-
   return (
     <div className="flex h-full flex-col">
       <TopBar
@@ -47,8 +38,6 @@ export default function App() {
         setView={setView}
         count={rows.length}
         total={listings.length}
-        onAdd={() => openIntake(true)}
-        onAddBlank={addBlank}
         onSettings={() => openSettings(true)}
       />
 
@@ -74,7 +63,6 @@ export default function App() {
       )}
 
       <DetailDrawer />
-      <IntakeDialog />
       <SettingsDialog />
     </div>
   );
@@ -85,16 +73,12 @@ function TopBar({
   setView,
   count,
   total,
-  onAdd,
-  onAddBlank,
   onSettings,
 }: {
   view: ViewMode;
   setView: (v: ViewMode) => void;
   count: number;
   total: number;
-  onAdd: () => void;
-  onAddBlank: () => void;
   onSettings: () => void;
 }) {
   const views: { id: ViewMode; label: string }[] = [
@@ -128,8 +112,6 @@ function TopBar({
 
       <div className="flex items-center gap-2">
         <a className="btn hidden sm:inline-flex" href={api.exportCsvUrl()}>Export CSV</a>
-        <button className="btn" onClick={onAddBlank}>+ Blank</button>
-        <button className="btn btn-primary" onClick={onAdd}>+ Add listing</button>
         <button className="btn" onClick={onSettings} title="Settings">⚙</button>
       </div>
     </header>

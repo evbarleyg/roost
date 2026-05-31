@@ -1,7 +1,6 @@
 // Thin typed client. All calls go through the Vite proxy at /api -> backend.
 import type {
   Listing,
-  ListingDraft,
   SavedFilter,
   Settings,
   TagsResponse,
@@ -35,12 +34,6 @@ export const api = {
   updateListing: (id: string, body: Partial<Listing>) =>
     req<Listing>(`/listings/${id}`, { method: "PATCH", body: JSON.stringify(body) }),
   deleteListing: (id: string) => req<void>(`/listings/${id}`, { method: "DELETE" }),
-
-  extract: (body: { url?: string; text?: string }) =>
-    req<{ needs_paste: boolean; draft?: ListingDraft; message?: string; url?: string }>(
-      "/listings/extract",
-      { method: "POST", body: JSON.stringify(body) },
-    ),
 
   tags: () => req<TagsResponse>("/tags"),
 

@@ -1,7 +1,9 @@
 """Roost backend — FastAPI app.
 
-Local-first, single-couple apartment-scouting tool. Holds the Anthropic key and
-proxies LLM intake + directions; all data lives in a flat JSON file.
+Local-first, single-couple apartment-scouting tool. This is a pure data layer: it
+serves and mutates a flat JSON file and proxies directions lookups. It makes NO
+LLM calls — listing extraction and auto-scoring are done out-of-band in a Claude
+Code session that writes results straight into db.json (no API key required).
 """
 from __future__ import annotations
 
@@ -11,10 +13,10 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-load_dotenv()  # pick up backend/.env (ANTHROPIC_API_KEY, optional directions keys)
+load_dotenv()  # pick up backend/.env (optional directions API keys; no LLM key needed)
 
 from . import store  # noqa: E402  (after load_dotenv so env is ready)
-from .routes import commute, export, intake, listings, saved_filters, settings, tags  # noqa: E402
+from .routes import commute, export, listings, saved_filters, settings, tags  # noqa: E402
 
 app = FastAPI(title="Roost", version="0.1.0", description="Personal apartment-scouting app")
 
@@ -38,5 +40,5 @@ def health() -> dict:
     return {"status": "ok"}
 
 
-for r in (listings, intake, tags, settings, saved_filters, commute, export):
+for r in (listings, tags, settings, saved_filters, commute, export):
     app.include_router(r.router)

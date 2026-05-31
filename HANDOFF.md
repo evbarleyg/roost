@@ -3,9 +3,21 @@
 Context for continuing this work in Claude Code (VS Code). Read this first.
 
 ## What Roost is
-Personal SF **rental**-hunting app (two raters: you + fiancé). FastAPI backend
-(`backend/`, port 8000) with a flat-JSON store at `backend/data/db.json`; React +
-Vite + Leaflet frontend (`frontend/`, port 5173, proxies `/api` → backend).
+Personal SF **rental**-hunting app. FastAPI backend (`backend/`, port 8000) with a
+flat-JSON store at `backend/data/db.json`; React + Vite + Leaflet frontend
+(`frontend/`, port 5173, proxies `/api` → backend). It is an **exploratory browser**,
+not a rating tool: rich read-only listing info, light notes/status only.
+
+## Architecture: the app makes NO LLM calls
+The running app is a pure data layer (serve + mutate `db.json`, proxy directions).
+There is **no API key and no live LLM path** — the old `/listings/extract` intake
+endpoint and `backend/app/intake.py` were removed. All LLM work is done **in a
+Claude Code session** (the user's subscription, not metered API) writing straight
+into `db.json`:
+- **Auto-scoring** listings on the 1–5 dimensions → the `auto` rater on `ratings`.
+- **Listing intake**: paste a URL/listing text to Claude Code; it extracts the
+  structured fields and adds the row (this replaces the old in-app intake dialog).
+Re-scoring/adding listings is therefore a dev-session task, not a runtime feature.
 
 ## State of the data
 - **~1,210 Craigslist SF listings** in `db.json`, all in-SF, all with a link-out
@@ -38,10 +50,11 @@ Vite + Leaflet frontend (`frontend/`, port 5173, proxies `/api` → backend).
   `source=="Craigslist" && !listed_at`, fill only missing fields, skip-on-failure
   (idempotent), CONCURRENCY=2 + ~1.5s throttle, stop immediately on any 403/429.
   Scraper scripts: `/tmp/collect_craigslist.mjs`, `/tmp/enrich_all.mjs`.
-- **PREREQUISITE for any LLM call** (intake dialog): `backend/.env` does not
-  exist, so `ANTHROPIC_API_KEY` is unset. `cd backend && cp .env.example .env`
-  then add the key.
-- **Move scraper scripts into the repo** (they're one-offs in `/tmp/`).
+- No API key needed anymore (see Architecture above). `backend/.env` is only for
+  optional paid directions providers; OSRM (default) needs none. `anthropic` /
+  `beautifulsoup4` in `backend/requirements.txt` are now unused — safe to drop.
+- **Move the CL collection script into the repo** (`/tmp/collect_craigslist.mjs`);
+  the enrichment one now lives at `backend/scripts/backfill_cl.mjs`.
 - The 4 original listings have empty `url` (don't link out) — decide keep/drop.
 
 ## Run it
