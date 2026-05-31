@@ -1,4 +1,4 @@
-import { useEffect, useMemo, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 
 import { CardGallery } from "./components/CardGallery";
 import { DetailDrawer } from "./components/DetailDrawer";
@@ -22,6 +22,7 @@ export default function App() {
   const view = useStore((s) => s.view);
   const setView = useStore((s) => s.setView);
   const openSettings = useStore((s) => s.openSettings);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   useEffect(() => {
     init();
@@ -40,6 +41,7 @@ export default function App() {
         count={rows.length}
         total={listings.length}
         onSettings={() => openSettings(true)}
+        onOpenFilters={() => setFiltersOpen(true)}
       />
 
       {loading ? (
@@ -54,7 +56,19 @@ export default function App() {
         </Center>
       ) : (
         <div className="flex min-h-0 flex-1">
-          <FilterRail />
+          {/* Desktop: static sidebar. */}
+          <div className="hidden shrink-0 md:block">
+            <FilterRail />
+          </div>
+          {/* Mobile: slide-over drawer toggled from the header. */}
+          {filtersOpen && (
+            <div className="fixed inset-0 z-40 md:hidden">
+              <div className="absolute inset-0 bg-black/30" onClick={() => setFiltersOpen(false)} />
+              <div className="absolute left-0 top-0 h-full w-[86%] max-w-xs shadow-drawer">
+                <FilterRail onDone={() => setFiltersOpen(false)} count={rows.length} />
+              </div>
+            </div>
+          )}
           <main className="min-w-0 flex-1">
             {view === "table" && <RankTable rows={rows} />}
             {view === "cards" && <CardGallery rows={rows} />}
@@ -75,12 +89,14 @@ function TopBar({
   count,
   total,
   onSettings,
+  onOpenFilters,
 }: {
   view: ViewMode;
   setView: (v: ViewMode) => void;
   count: number;
   total: number;
   onSettings: () => void;
+  onOpenFilters: () => void;
 }) {
   const views: { id: ViewMode; label: string }[] = [
     { id: "table", label: "Rank" },
@@ -88,8 +104,12 @@ function TopBar({
     { id: "map", label: "Map" },
   ];
   return (
-    <header className="flex items-center justify-between border-b border-roost-line bg-roost-panel px-4 py-2.5">
+    <header className="flex items-center justify-between gap-2 border-b border-roost-line bg-roost-panel px-4 py-2.5">
       <div className="flex items-center gap-3">
+        {/* Mobile: open the filter drawer (the sidebar is hidden on small screens). */}
+        <button className="btn px-2 md:hidden" onClick={onOpenFilters} title="Filters" aria-label="Filters">
+          ☰
+        </button>
         <div className="flex items-center gap-2">
           <span className="text-xl">🪺</span>
           <h1 className="text-lg font-semibold tracking-tight">Roost</h1>

@@ -16,7 +16,7 @@ const CATEGORY_LABEL: Record<string, string> = {
 };
 const STATUSES: Status[] = ["candidate", "toured", "rejected", "applied"];
 
-export function FilterRail() {
+export function FilterRail({ onDone, count }: { onDone?: () => void; count?: number } = {}) {
   const { listings, settings, tags, catMap, filter, setFilter, clearFilter } = useStore();
   const savedFilters = useStore((s) => s.savedFilters);
   const applySavedFilter = useStore((s) => s.applySavedFilter);
@@ -68,8 +68,15 @@ export function FilterRail() {
   const numOrNull = (v: string): number | null => (v.trim() === "" ? null : Number(v));
 
   return (
-    <aside className="flex h-full w-72 shrink-0 flex-col gap-4 overflow-y-auto border-r border-roost-line bg-roost-panel p-4">
+    <aside className="flex h-full w-full shrink-0 flex-col gap-4 overflow-y-auto border-r border-roost-line bg-roost-panel p-4 md:w-72">
       <Header onClear={clearFilter} />
+
+      {/* Mobile-only: apply & close the filter drawer. */}
+      {onDone && (
+        <button className="btn btn-primary md:hidden" onClick={onDone}>
+          {count != null ? `Show ${count} listings` : "Done"}
+        </button>
+      )}
 
       {/* Saved presets */}
       <Section title="Saved presets">
