@@ -2,7 +2,7 @@ import { useMemo, useState, type ReactNode } from "react";
 
 import { scoreTint } from "../lib/colors";
 import { minutes, money, num, ppsqft } from "../lib/format";
-import { derive, sortListings, type SortKey } from "../scoring";
+import { DEFAULT_SORT, derive, scoreTooltip, sortListings, type SortKey } from "../scoring";
 import { useStore } from "../store";
 import type { Listing } from "../types";
 import { ScoreBadge } from "./ScoreBadge";
@@ -16,10 +16,7 @@ function ageLabel(days: number | null | undefined): string {
 export function RankTable({ rows }: { rows: Listing[] }) {
   const settings = useStore((s) => s.settings)!;
   const select = useStore((s) => s.select);
-  const [sort, setSort] = useState<{ key: SortKey | "name"; dir: "asc" | "desc" }>({
-    key: "score",
-    dir: "desc",
-  });
+  const [sort, setSort] = useState<{ key: SortKey | "name"; dir: "asc" | "desc" }>(DEFAULT_SORT);
 
   const sorted = useMemo(() => {
     if (sort.key === "name") {
@@ -73,7 +70,7 @@ export function RankTable({ rows }: { rows: Listing[] }) {
                 >
                   <td className="px-3 py-2" style={{ backgroundColor: tint.bg }}>
                     <div className="flex flex-col items-start gap-0.5">
-                      <ScoreBadge value={d.score_combined} size="sm" />
+                      <ScoreBadge value={d.score_combined} size="sm" tip={scoreTooltip(l, settings)} />
                       {d.ranked_by === "auto" && (
                         <span
                           title="Auto-scored by Claude"

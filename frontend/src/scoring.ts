@@ -87,6 +87,36 @@ export function rankedBy(l: Listing): "human" | "auto" | "none" {
   return l.ratings?.auto ? "auto" : "none";
 }
 
+// The per-dimension ratings that actually drove the combined score (the model's
+// "auto" read, or the humans' once they rate), so the UI can say WHY a listing is
+// a 3.8 rather than just showing the number.
+export function scoreBreakdown(l: Listing, s: Settings): { dimension: Dimension; value: number }[] {
+  const by = rankedBy(l);
+  if (by === "none") return [];
+  const eff: Partial<Record<Dimension, number>> = by === "auto" ? { ...effectiveRatings(l, "auto", s) } : {};
+  if (by === "human") {
+    const you = effectiveRatings(l, "you", s);
+    const fiance = effectiveRatings(l, "fiance", s);
+    for (const d of DIMENSIONS) {
+      const vals = [you[d], fiance[d]].filter((x): x is number => x != null);
+      if (vals.length) eff[d] = round(vals.reduce((a, b) => a + b, 0) / vals.length, 1);
+    }
+  }
+  return DIMENSIONS.filter((d) => eff[d] != null).map((d) => ({ dimension: d, value: eff[d]! }));
+}
+
+// "3.80 / 5  =  Safety 3 · Value 4 · …" — the hover explanation for a score badge.
+export function scoreTooltip(l: Listing, s: Settings): string {
+  const score = combinedScore(l, s);
+  if (score == null) return "Not yet scored";
+  const parts = scoreBreakdown(l, s)
+    .map((p) => `${p.dimension[0].toUpperCase()}${p.dimension.slice(1)} ${p.value}`)
+    .join(" · ");
+  if (!parts) return `${score.toFixed(2)} / 5`;
+  const src = rankedBy(l) === "auto" ? "  ·  AI estimate" : rankedBy(l) === "human" ? "  ·  your ratings" : "";
+  return `${score.toFixed(2)} / 5  =  ${parts}${src}`;
+}
+
 export function dollarPerSqft(l: Listing): number | null {
   if (!l.rent || !l.sqft) return null;
   return round(l.rent / l.sqft, 2);
@@ -189,6 +219,9 @@ export function facetCounts(
 }
 
 export type SortKey = "score" | "rent" | "ppsqft" | "sqft" | "commute" | "recency";
+
+// The default ranking shared by the table and the card grid: best score first.
+export const DEFAULT_SORT: { key: SortKey; dir: "asc" | "desc" } = { key: "score", dir: "desc" };
 
 export function sortListings(
   listings: Listing[],

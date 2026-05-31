@@ -1,6 +1,8 @@
+import { useMemo } from "react";
+
 import { scoreTint } from "../lib/colors";
 import { minutes, money, ppsqft } from "../lib/format";
-import { derive } from "../scoring";
+import { DEFAULT_SORT, derive, scoreTooltip, sortListings } from "../scoring";
 import { useStore } from "../store";
 import type { Listing } from "../types";
 import { ScoreBadge } from "./ScoreBadge";
@@ -11,13 +13,16 @@ export function CardGallery({ rows }: { rows: Listing[] }) {
   const catMap = useStore((s) => s.catMap);
   const select = useStore((s) => s.select);
 
+  // Cards share the table's default ranking (best score first).
+  const sorted = useMemo(() => sortListings(rows, settings, DEFAULT_SORT.key, DEFAULT_SORT.dir), [rows, settings]);
+
   if (!rows.length) {
     return <div className="p-12 text-center text-roost-muted">No listings match the current filters.</div>;
   }
 
   return (
     <div className="grid grid-cols-1 gap-4 overflow-y-auto p-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-      {rows.map((l) => {
+      {sorted.map((l) => {
         const d = derive(l, settings);
         const photo = l.photo_urls?.[0];
         return (
@@ -33,7 +38,7 @@ export function CardGallery({ rows }: { rows: Listing[] }) {
                 <div className="flex h-full items-center justify-center text-roost-muted">No photo</div>
               )}
               <div className="absolute right-2 top-2">
-                <ScoreBadge value={d.score_combined} />
+                <ScoreBadge value={d.score_combined} tip={scoreTooltip(l, settings)} />
               </div>
               {d.divergence.flagged && (
                 <span className="absolute left-2 top-2 rounded bg-rose-600 px-1.5 py-0.5 text-xs text-white">

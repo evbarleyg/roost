@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, type ReactNode } from "react";
 
 import { scoreColor } from "../lib/colors";
 import { minutes, money, num, ppsqft } from "../lib/format";
-import { derive } from "../scoring";
+import { derive, scoreTooltip } from "../scoring";
 import { STATIC } from "../static";
 import { useStore } from "../store";
 import { type Listing, type Status } from "../types";
@@ -144,7 +144,7 @@ export function DetailDrawer() {
               </div>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <ScoreBadge value={d.score_combined} size="lg" />
+              <ScoreBadge value={d.score_combined} size="lg" tip={scoreTooltip(listing, settings)} />
               {d.ranked_by === "auto" && (
                 <span className="rounded bg-roost-accent/10 px-1 text-[9px] font-semibold uppercase tracking-wide text-roost-accent">
                   AI score
