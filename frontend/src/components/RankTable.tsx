@@ -112,12 +112,12 @@ export function RankTable({ rows }: { rows: Listing[] }) {
                       </div>
                     </div>
                   </td>
-                  <td className="px-3 py-2 text-right tabular-nums">{money(l.rent)}</td>
-                  <td className="px-3 py-2 text-right tabular-nums">{ppsqft(d.dollar_per_sqft)}</td>
-                  <td className="px-3 py-2 text-right tabular-nums">{num(l.sqft)}</td>
-                  <td className="px-3 py-2 text-right tabular-nums">{num(l.beds)}</td>
-                  <td className="px-3 py-2 text-right tabular-nums">{minutes(d.commute_minutes)}</td>
-                  <td className="px-3 py-2 text-right tabular-nums text-roost-muted">{ageLabel(l.days_on_market)}</td>
+                  <td className="px-3 py-2 text-right font-mono text-[13px] tabular-nums">{money(l.rent)}</td>
+                  <td className="px-3 py-2 text-right font-mono text-[13px] tabular-nums">{ppsqft(d.dollar_per_sqft)}</td>
+                  <td className="px-3 py-2 text-right font-mono text-[13px] tabular-nums">{num(l.sqft)}</td>
+                  <td className="px-3 py-2 text-right font-mono text-[13px] tabular-nums">{num(l.beds)}</td>
+                  <td className="px-3 py-2 text-right font-mono text-[13px] tabular-nums">{minutes(d.commute_minutes)}</td>
+                  <td className="px-3 py-2 text-right font-mono text-[13px] tabular-nums text-roost-muted">{ageLabel(l.days_on_market)}</td>
                 </tr>
               );
             })}

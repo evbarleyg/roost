@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, sans-serif;
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 html,
@@ -16,6 +18,7 @@ body {
   margin: 0;
   background: theme("colors.roost.bg");
   color: theme("colors.roost.ink");
+  letter-spacing: -0.01em;
 }
 
 /* Leaflet renders below drawers/dialogs without this. */
@@ -36,36 +39,41 @@ body {
   height: 100%;
   border-radius: 9999px;
   border: 2px solid #ffffff;
-  background: rgba(120, 53, 15, 0.9);
+  background: #5b5bd6; /* iris accent */
   color: #ffffff;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 12px;
   font-weight: 600;
   line-height: 1;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 6px rgba(91, 91, 214, 0.35);
   cursor: pointer;
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-1.5 rounded-md border border-roost-line
-      bg-white px-3 py-1.5 text-sm font-medium text-roost-ink transition
-      hover:bg-roost-bg active:scale-[0.98] disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg border border-roost-line
+      bg-white px-3 py-1.5 text-sm font-medium text-roost-ink shadow-card transition
+      hover:border-zinc-300 hover:bg-roost-bg active:scale-[0.98] disabled:opacity-50;
   }
   .btn-primary {
-    @apply border-roost-accent bg-roost-accent text-white hover:bg-amber-800;
+    @apply border-transparent bg-roost-ink text-white shadow-none hover:bg-zinc-800;
+  }
+  .btn-accent {
+    @apply border-transparent bg-roost-accent text-white shadow-none hover:brightness-95;
   }
   .input {
-    @apply w-full rounded-md border border-roost-line bg-white px-2.5 py-1.5 text-sm
-      outline-none focus:border-roost-accent focus:ring-1 focus:ring-roost-accent;
+    @apply w-full rounded-lg border border-roost-line bg-white px-2.5 py-1.5 text-sm
+      outline-none transition placeholder:text-zinc-400
+      focus:border-roost-accent focus:ring-2 focus:ring-roost-accent/20;
   }
   .chip {
     @apply inline-flex items-center gap-1 rounded-full border border-roost-line bg-white
-      px-2 py-0.5 text-xs text-roost-muted;
+      px-2.5 py-1 text-xs font-medium text-roost-muted transition hover:border-zinc-300;
   }
   .chip-on {
-    @apply border-roost-accent bg-roost-accentSoft text-roost-accent;
+    @apply border-roost-accent/30 bg-roost-accentSoft text-roost-accent hover:border-roost-accent/40;
   }
   .card {
-    @apply rounded-xl border border-roost-line bg-roost-panel shadow-sm;
+    @apply rounded-xl border border-roost-line bg-roost-panel shadow-card;
   }
 }
