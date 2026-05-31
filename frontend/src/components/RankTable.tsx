@@ -2,19 +2,20 @@ import { useMemo, useState, type ReactNode } from "react";
 
 import { scoreTint } from "../lib/colors";
 import { minutes, money, num, ppsqft } from "../lib/format";
-import { derive, minutesToRating, sortListings, type SortKey } from "../scoring";
+import { derive, sortListings, type SortKey } from "../scoring";
 import { useStore } from "../store";
-import type { Listing, Rater } from "../types";
-import { RatingStars } from "./RatingStars";
+import type { Listing } from "../types";
 import { ScoreBadge } from "./ScoreBadge";
 
-const EDITABLE_DIMS = ["safety", "value", "quality", "views", "space"] as const;
+function ageLabel(days: number | null | undefined): string {
+  if (days == null) return "—";
+  if (days <= 0) return "today";
+  return `${days}d`;
+}
 
 export function RankTable({ rows }: { rows: Listing[] }) {
   const settings = useStore((s) => s.settings)!;
   const select = useStore((s) => s.select);
-  const updateListing = useStore((s) => s.updateListing);
-  const [rater, setRater] = useState<Rater>("you");
   const [sort, setSort] = useState<{ key: SortKey | "name"; dir: "asc" | "desc" }>({
     key: "score",
     dir: "desc",
@@ -29,15 +30,6 @@ export function RankTable({ rows }: { rows: Listing[] }) {
     return sortListings(rows, settings, sort.key, sort.dir);
   }, [rows, settings, sort]);
 
-  const setRating = (l: Listing, dim: string, v: number | null) => {
-    const ratings = { ...(l.ratings ?? {}) };
-    const r = { ...(ratings[rater] ?? {}) };
-    if (v == null) delete (r as Record<string, number>)[dim];
-    else (r as Record<string, number>)[dim] = v;
-    ratings[rater] = r;
-    updateListing(l.id, { ratings });
-  };
-
   const SortHead = ({ k, children, className = "" }: { k: SortKey | "name"; children: ReactNode; className?: string }) => (
     <th
       className={`cursor-pointer select-none whitespace-nowrap px-3 py-2 text-left font-semibold hover:text-roost-accent ${className}`}
@@ -50,20 +42,8 @@ export function RankTable({ rows }: { rows: Listing[] }) {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-center gap-2 px-4 py-2 text-sm text-roost-muted">
-        <span>Editing ratings for</span>
-        <div className="inline-flex overflow-hidden rounded-md border border-roost-line">
-          {(["you", "fiance"] as Rater[]).map((r) => (
-            <button
-              key={r}
-              className={`px-3 py-1 ${rater === r ? "bg-roost-accent text-white" : "bg-white"}`}
-              onClick={() => setRater(r)}
-            >
-              {r === "you" ? "You" : "Fiancé"}
-            </button>
-          ))}
-        </div>
-        <span className="text-xs">· {sorted.length} listings · click a row for details</span>
+      <div className="px-4 py-2 text-xs text-roost-muted">
+        {sorted.length} listings · click a row for photos and details
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto">
@@ -75,19 +55,16 @@ export function RankTable({ rows }: { rows: Listing[] }) {
               <SortHead k="rent" className="text-right">Rent</SortHead>
               <SortHead k="ppsqft" className="text-right">$/sqft</SortHead>
               <SortHead k="sqft" className="text-right">Sqft</SortHead>
+              <th className="px-3 py-2 text-right font-semibold">Beds</th>
               <SortHead k="commute" className="text-right">Commute</SortHead>
-              {EDITABLE_DIMS.map((d) => (
-                <th key={d} className="px-2 py-2 text-center font-semibold capitalize">{d}</th>
-              ))}
-              <th className="px-2 py-2 text-center font-semibold">Δ</th>
+              <th className="px-3 py-2 text-right font-semibold">Age</th>
             </tr>
           </thead>
           <tbody>
             {sorted.map((l) => {
               const d = derive(l, settings);
               const tint = scoreTint(d.score_combined);
-              const commuteDerived = minutesToRating(d.commute_minutes, settings.commute_bands);
-              const activeRatings = l.ratings?.[rater] ?? {};
+              const photo = l.photo_urls?.[0];
               return (
                 <tr
                   key={l.id}
@@ -99,7 +76,7 @@ export function RankTable({ rows }: { rows: Listing[] }) {
                       <ScoreBadge value={d.score_combined} size="sm" />
                       {d.ranked_by === "auto" && (
                         <span
-                          title="Auto-scored by Claude — rate it yourself to override"
+                          title="Auto-scored by Claude"
                           className="rounded bg-roost-accent/10 px-1 text-[9px] font-semibold uppercase tracking-wide text-roost-accent"
                         >
                           AI
@@ -108,53 +85,45 @@ export function RankTable({ rows }: { rows: Listing[] }) {
                     </div>
                   </td>
                   <td className="px-3 py-2">
-                    <div className="font-medium">{l.name}</div>
-                    <div className="flex items-center gap-1.5 text-xs text-roost-muted">
-                      <span>{l.neighborhood || "—"}</span>
-                      {l.url && (
-                        <a
-                          href={l.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-roost-accent hover:underline"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          {l.source || "link"} ↗
-                        </a>
-                      )}
+                    <div className="flex items-center gap-2.5">
+                      <div className="h-10 w-12 shrink-0 overflow-hidden rounded bg-roost-bg">
+                        {photo ? (
+                          <img src={photo} alt="" loading="lazy" className="h-full w-full object-cover" />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center text-[9px] text-roost-muted">no photo</div>
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="truncate font-medium">{l.name}</div>
+                        <div className="flex items-center gap-1.5 text-xs text-roost-muted">
+                          <span>{l.neighborhood || "—"}</span>
+                          {l.url && (
+                            <a
+                              href={l.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-roost-accent hover:underline"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              {l.source || "link"} ↗
+                            </a>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </td>
                   <td className="px-3 py-2 text-right tabular-nums">{money(l.rent)}</td>
                   <td className="px-3 py-2 text-right tabular-nums">{ppsqft(d.dollar_per_sqft)}</td>
                   <td className="px-3 py-2 text-right tabular-nums">{num(l.sqft)}</td>
-                  <td className="px-3 py-2 text-right tabular-nums">
-                    <div>{minutes(d.commute_minutes)}</div>
-                    {commuteDerived != null && (
-                      <div className="text-[10px] text-roost-muted">rated {commuteDerived}/5</div>
-                    )}
-                  </td>
-                  {EDITABLE_DIMS.map((dim) => (
-                    <td key={dim} className="px-2 py-2 text-center" onClick={(e) => e.stopPropagation()}>
-                      <RatingStars
-                        size="sm"
-                        value={(activeRatings as Record<string, number>)[dim] ?? null}
-                        onChange={(v) => setRating(l, dim, v)}
-                      />
-                    </td>
-                  ))}
-                  <td className="px-2 py-2 text-center">
-                    {d.divergence.flagged && (
-                      <span title={`Raters differ by ${d.divergence.max_diff}`} className="text-rose-600">
-                        ⚠
-                      </span>
-                    )}
-                  </td>
+                  <td className="px-3 py-2 text-right tabular-nums">{num(l.beds)}</td>
+                  <td className="px-3 py-2 text-right tabular-nums">{minutes(d.commute_minutes)}</td>
+                  <td className="px-3 py-2 text-right tabular-nums text-roost-muted">{ageLabel(l.days_on_market)}</td>
                 </tr>
               );
             })}
             {sorted.length === 0 && (
               <tr>
-                <td colSpan={12} className="px-4 py-12 text-center text-roost-muted">
+                <td colSpan={8} className="px-4 py-12 text-center text-roost-muted">
                   No listings match the current filters.
                 </td>
               </tr>

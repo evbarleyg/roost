@@ -46,6 +46,8 @@ export interface Listing {
   name: string;
   address: string;
   neighborhood: string;
+  // Original free-text neighborhood before normalization to a canonical SF name.
+  neighborhood_raw?: string;
   source: string;
   url: string;
   rent: number | null;
@@ -63,6 +65,11 @@ export interface Listing {
   ratings: Ratings;
   commute_minutes_manual: number | null;
   commute: CommuteResult | null;
+  // Real posting date + age from the source detail page (null until enriched).
+  listed_at?: string | null;
+  days_on_market?: number | null;
+  // True when Claude auto-scored this listing (the `auto` ratings rater).
+  auto_scored?: boolean;
   created_at: string;
   updated_at: string;
 }
