@@ -10,6 +10,9 @@ node_modules/
 dist/
 *.log
 
+# Static deploy: data baked from db.json at build time, not committed.
+frontend/public/data/
+
 # OS
 .DS_Store
 

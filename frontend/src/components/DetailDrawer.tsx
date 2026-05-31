@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { scoreColor } from "../lib/colors";
 import { minutes, money, num, ppsqft } from "../lib/format";
 import { derive } from "../scoring";
+import { STATIC } from "../static";
 import { useStore } from "../store";
 import { type Listing, type Status } from "../types";
 import { Editable } from "./Editable";
@@ -216,9 +217,11 @@ export function DetailDrawer() {
             {listing.commute?.haversine_km != null && (
               <span className="text-xs text-roost-muted">straight-line {listing.commute.haversine_km.toFixed(1)} km</span>
             )}
-            <button className="btn ml-auto" onClick={runCommute} disabled={computing}>
-              {computing ? "Computing…" : d.commute_minutes == null ? "Compute commute" : "Recompute"}
-            </button>
+            {!STATIC && (
+              <button className="btn ml-auto" onClick={runCommute} disabled={computing}>
+                {computing ? "Computing…" : d.commute_minutes == null ? "Compute commute" : "Recompute"}
+              </button>
+            )}
           </section>
 
           {/* Light personal annotation — the only inputs left */}

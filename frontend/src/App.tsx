@@ -8,6 +8,7 @@ import { RankTable } from "./components/RankTable";
 import { SettingsDialog } from "./components/SettingsDialog";
 import { api } from "./api";
 import { passes } from "./scoring";
+import { STATIC } from "./static";
 import { useStore, type ViewMode } from "./store";
 
 export default function App() {
@@ -111,7 +112,7 @@ function TopBar({
       </div>
 
       <div className="flex items-center gap-2">
-        <a className="btn hidden sm:inline-flex" href={api.exportCsvUrl()}>Export CSV</a>
+        {!STATIC && <a className="btn hidden sm:inline-flex" href={api.exportCsvUrl()}>Export CSV</a>}
         <button className="btn" onClick={onSettings} title="Settings">⚙</button>
       </div>
     </header>

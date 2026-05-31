@@ -1,4 +1,7 @@
-// Thin typed client. All calls go through the Vite proxy at /api -> backend.
+// Thin typed client. In the normal (backend) build all calls go through the Vite
+// proxy at /api -> backend. In the static deploy (VITE_STATIC=true) there is no
+// backend, so we swap in the localStorage-backed staticApi (see static.ts).
+import { STATIC, staticApi } from "./static";
 import type {
   Listing,
   SavedFilter,
@@ -27,7 +30,7 @@ async function req<T>(path: string, init?: RequestInit): Promise<T> {
   return resp.json() as Promise<T>;
 }
 
-export const api = {
+const liveApi = {
   listings: () => req<Listing[]>("/listings"),
   createListing: (body: Partial<Listing>) =>
     req<Listing>("/listings", { method: "POST", body: JSON.stringify(body) }),
@@ -56,3 +59,6 @@ export const api = {
 
   exportCsvUrl: () => `${BASE}/export.csv`,
 };
+
+// One of these two is the live client; pick based on the build mode.
+export const api = STATIC ? staticApi : liveApi;
