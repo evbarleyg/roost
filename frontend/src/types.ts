@@ -75,6 +75,8 @@ export interface Listing {
   link_status?: "live" | "dead" | "unknown";
   checked_at?: string;
   dead_at?: string;
+  // Set by the dedupe script to the id of the kept listing; duplicates are hidden by default.
+  duplicate_of?: string;
   created_at: string;
   updated_at: string;
 }

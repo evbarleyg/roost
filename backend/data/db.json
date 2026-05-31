@@ -1504,7 +1504,8 @@
       "auto_scored": true,
       "neighborhood_raw": "north beach / telegraph hill",
       "checked_at": "2026-05-31T18:29:48+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937787099"
     },
     {
       "id": "7937557420",
@@ -1818,7 +1819,8 @@
       "auto_scored": true,
       "neighborhood_raw": "ingleside / SFSU / CCSF",
       "checked_at": "2026-05-31T18:29:54+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936491100"
     },
     {
       "id": "7936491100",
@@ -1928,7 +1930,8 @@
       "auto_scored": true,
       "neighborhood_raw": "ingleside / SFSU / CCSF",
       "checked_at": "2026-05-31T18:29:56+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936491100"
     },
     {
       "id": "7936489187",
@@ -2184,7 +2187,8 @@
       "auto_scored": true,
       "neighborhood_raw": "ingleside / SFSU / CCSF",
       "checked_at": "2026-05-31T18:30:01+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936434467"
     },
     {
       "id": "7937397622",
@@ -2936,7 +2940,8 @@
       "auto_scored": true,
       "neighborhood_raw": "north beach / telegraph hill",
       "checked_at": "2026-05-31T18:30:17+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936506373"
     },
     {
       "id": "7937346255",
@@ -6957,7 +6962,8 @@
       "auto_scored": true,
       "neighborhood_raw": "lower nob hill",
       "checked_at": "2026-05-31T18:31:37+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937851928"
     },
     {
       "id": "7937560890",
@@ -8141,7 +8147,8 @@
       "auto_scored": true,
       "neighborhood_raw": "tenderloin",
       "checked_at": "2026-05-31T18:32:02+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935671829"
     },
     {
       "id": "7935665244",
@@ -9212,7 +9219,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Downtown",
       "checked_at": "2026-05-31T18:32:24+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937552623"
     },
     {
       "id": "7937303707",
@@ -9264,7 +9272,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Downtown",
       "checked_at": "2026-05-31T18:32:25+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937548574"
     },
     {
       "id": "7937300060",
@@ -9417,7 +9426,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Downtown",
       "checked_at": "2026-05-31T18:32:29+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937496964"
     },
     {
       "id": "7937284779",
@@ -9467,7 +9477,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Downtown",
       "checked_at": "2026-05-31T18:32:30+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937484488"
     },
     {
       "id": "7937195346",
@@ -9776,7 +9787,8 @@
       "auto_scored": true,
       "neighborhood_raw": "lower nob hill",
       "checked_at": "2026-05-31T18:32:36+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937356460"
     },
     {
       "id": "7937118180",
@@ -10814,7 +10826,8 @@
       "auto_scored": true,
       "neighborhood_raw": "tenderloin",
       "checked_at": "2026-05-31T18:32:56+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937373966"
     },
     {
       "id": "7936596393",
@@ -14312,7 +14325,8 @@
       "auto_scored": true,
       "neighborhood_raw": "city of san francisco",
       "checked_at": "2026-05-31T18:34:05+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937667856"
     },
     {
       "id": "7937660123",
@@ -15199,7 +15213,8 @@
       "auto_scored": true,
       "neighborhood_raw": "lower nob hill",
       "checked_at": "2026-05-31T18:34:22+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937852609"
     },
     {
       "id": "7937474026",
@@ -15711,7 +15726,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Downtown",
       "checked_at": "2026-05-31T18:34:32+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937554469"
     },
     {
       "id": "7931936827",
@@ -15816,7 +15832,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Downtown",
       "checked_at": "2026-05-31T18:34:34+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937553898"
     },
     {
       "id": "7937306880",
@@ -15868,7 +15885,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Downtown",
       "checked_at": "2026-05-31T18:34:35+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937553275"
     },
     {
       "id": "7933246573",
@@ -17056,7 +17074,8 @@
       "auto_scored": true,
       "neighborhood_raw": "San Francisco",
       "checked_at": "2026-05-31T18:34:58+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936116988"
     },
     {
       "id": "7935902032",
@@ -17106,7 +17125,8 @@
       "auto_scored": true,
       "neighborhood_raw": "San Francisco",
       "checked_at": "2026-05-31T18:34:59+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936116988"
     },
     {
       "id": "7935898974",
@@ -17156,7 +17176,8 @@
       "auto_scored": true,
       "neighborhood_raw": "San Francisco",
       "checked_at": "2026-05-31T18:35:00+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936115540"
     },
     {
       "id": "7935886843",
@@ -17206,7 +17227,8 @@
       "auto_scored": true,
       "neighborhood_raw": "San franscisco",
       "checked_at": "2026-05-31T18:35:02+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936116988"
     },
     {
       "id": "7935888980",
@@ -17256,7 +17278,8 @@
       "auto_scored": true,
       "neighborhood_raw": "San franscisco",
       "checked_at": "2026-05-31T18:35:03+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936115540"
     },
     {
       "id": "7935883964",
@@ -17306,7 +17329,8 @@
       "auto_scored": true,
       "neighborhood_raw": "San franscisco",
       "checked_at": "2026-05-31T18:35:04+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936118249"
     },
     {
       "id": "7935564784",
@@ -19176,7 +19200,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:35:42+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937852330"
     },
     {
       "id": "7937497910",
@@ -19280,7 +19305,8 @@
       "auto_scored": true,
       "neighborhood_raw": "inner richmond",
       "checked_at": "2026-05-31T18:35:44+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937851786"
     },
     {
       "id": "7937491255",
@@ -19435,7 +19461,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:35:47+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936597328"
     },
     {
       "id": "7937479421",
@@ -20263,7 +20290,8 @@
       "auto_scored": true,
       "neighborhood_raw": "SOMA / south beach",
       "checked_at": "2026-05-31T18:36:03+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937491255"
     },
     {
       "id": "7937295779",
@@ -20316,7 +20344,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Downtown",
       "checked_at": "2026-05-31T18:36:04+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937546062"
     },
     {
       "id": "7937293638",
@@ -20369,7 +20398,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Downtown",
       "checked_at": "2026-05-31T18:36:05+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937539992"
     },
     {
       "id": "7937289098",
@@ -20420,7 +20450,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Downtown",
       "checked_at": "2026-05-31T18:36:06+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937529238"
     },
     {
       "id": "7934642676",
@@ -22334,7 +22365,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:36:45+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937775260"
     },
     {
       "id": "7932069726",
@@ -22705,7 +22737,8 @@
       "auto_scored": true,
       "neighborhood_raw": "hayes valley",
       "checked_at": "2026-05-31T18:36:52+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935565051"
     },
     {
       "id": "7935564826",
@@ -22811,7 +22844,8 @@
       "auto_scored": true,
       "neighborhood_raw": "hayes valley",
       "checked_at": "2026-05-31T18:36:53+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935564826"
     },
     {
       "id": "7935564537",
@@ -22964,7 +22998,8 @@
       "auto_scored": true,
       "neighborhood_raw": "tenderloin",
       "checked_at": "2026-05-31T18:36:58+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7932951977"
     },
     {
       "id": "7932168479",
@@ -23014,7 +23049,8 @@
       "auto_scored": true,
       "neighborhood_raw": "tenderloin",
       "checked_at": "2026-05-31T18:36:58+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7932595766"
     },
     {
       "id": "7932888848",
@@ -23587,7 +23623,8 @@
       "auto_scored": true,
       "neighborhood_raw": "tenderloin",
       "checked_at": "2026-05-31T18:37:10+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7932595766"
     },
     {
       "id": "7937710476",
@@ -24416,7 +24453,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:37:26+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937182025"
     },
     {
       "id": "7937547143",
@@ -24518,7 +24556,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:37:28+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937582058"
     },
     {
       "id": "7937537921",
@@ -24623,7 +24662,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:37:36+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937582058"
     },
     {
       "id": "7937528931",
@@ -24781,7 +24821,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:37:39+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937582058"
     },
     {
       "id": "7937503416",
@@ -24835,7 +24876,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:37:40+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937852466"
     },
     {
       "id": "7937495911",
@@ -24891,7 +24933,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:37:42+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937852190"
     },
     {
       "id": "7937491538",
@@ -24994,7 +25037,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:37:44+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937582058"
     },
     {
       "id": "7937479840",
@@ -25196,7 +25240,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:37:48+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937582058"
     },
     {
       "id": "7937402036",
@@ -25450,7 +25495,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:37:53+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937582058"
     },
     {
       "id": "7934603527",
@@ -25608,7 +25654,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:37:58+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937582058"
     },
     {
       "id": "7937335920",
@@ -25812,7 +25859,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:38:01+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937582058"
     },
     {
       "id": "7937316080",
@@ -26077,7 +26125,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:38:05+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937582058"
     },
     {
       "id": "7937295682",
@@ -26387,7 +26436,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:38:14+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937582058"
     },
     {
       "id": "7937264408",
@@ -26489,7 +26539,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:38:16+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937582058"
     },
     {
       "id": "7937223370",
@@ -27111,7 +27162,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:38:31+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937278134"
     },
     {
       "id": "7937055129",
@@ -28005,7 +28057,8 @@
       "auto_scored": true,
       "neighborhood_raw": "SOMA / south beach",
       "checked_at": "2026-05-31T18:38:48+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937158092"
     },
     {
       "id": "7936831433",
@@ -32570,7 +32623,8 @@
       "auto_scored": true,
       "neighborhood_raw": "downtown / civic / van ness",
       "checked_at": "2026-05-31T18:40:48+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937780730"
     },
     {
       "id": "7937508477",
@@ -33932,7 +33986,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Pacific Heights",
       "checked_at": "2026-05-31T18:42:40+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937576984"
     },
     {
       "id": "7937339456",
@@ -34066,7 +34121,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Nob Hill",
       "checked_at": "2026-05-31T18:42:44+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937572175"
     },
     {
       "id": "7937332031",
@@ -34501,7 +34557,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Central Sunset",
       "checked_at": "2026-05-31T18:42:52+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937478623"
     },
     {
       "id": "7937264759",
@@ -35366,7 +35423,8 @@
       "auto_scored": true,
       "neighborhood_raw": "SOMA / south beach",
       "checked_at": "2026-05-31T18:43:10+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936974147"
     },
     {
       "id": "7937054396",
@@ -38202,7 +38260,8 @@
       "auto_scored": true,
       "neighborhood_raw": "ingleside / SFSU / CCSF",
       "checked_at": "2026-05-31T18:44:07+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936178594"
     },
     {
       "id": "7934402876",
@@ -40698,7 +40757,8 @@
       "auto_scored": true,
       "neighborhood_raw": "SOMA / south beach",
       "checked_at": "2026-05-31T18:45:01+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937735622"
     },
     {
       "id": "7937578710",
@@ -41600,7 +41660,8 @@
       "auto_scored": true,
       "neighborhood_raw": "SOMA / south beach",
       "checked_at": "2026-05-31T18:45:20+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937717714"
     },
     {
       "id": "7937546364",
@@ -42073,7 +42134,8 @@
       "auto_scored": true,
       "neighborhood_raw": "SOMA / south beach",
       "checked_at": "2026-05-31T18:45:30+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937779748"
     },
     {
       "id": "7935674830",
@@ -43963,7 +44025,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:46:08+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937440993"
     },
     {
       "id": "7937370940",
@@ -44565,7 +44628,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Nob Hill",
       "checked_at": "2026-05-31T18:46:21+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937574430"
     },
     {
       "id": "7937337268",
@@ -44670,7 +44734,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Nob Hill",
       "checked_at": "2026-05-31T18:46:23+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937570436"
     },
     {
       "id": "7937318763",
@@ -45115,7 +45180,8 @@
       "auto_scored": true,
       "neighborhood_raw": "hayes valley",
       "checked_at": "2026-05-31T18:46:32+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937779361"
     },
     {
       "id": "7937267004",
@@ -45165,7 +45231,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Buena Vista",
       "checked_at": "2026-05-31T18:46:33+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937475538"
     },
     {
       "id": "7937258602",
@@ -45371,7 +45438,8 @@
       "auto_scored": true,
       "neighborhood_raw": "inner sunset / UCSF",
       "checked_at": "2026-05-31T18:46:37+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937322877"
     },
     {
       "id": "7937198615",
@@ -47431,7 +47499,8 @@
       "auto_scored": true,
       "neighborhood_raw": "San franscisco",
       "checked_at": "2026-05-31T18:47:21+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935902781"
     },
     {
       "id": "7935846700",
@@ -47838,7 +47907,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:47:29+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935409251"
     },
     {
       "id": "7934580448",
@@ -48045,7 +48115,8 @@
       "auto_scored": true,
       "neighborhood_raw": "lower nob hill",
       "checked_at": "2026-05-31T18:47:33+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7934580448"
     },
     {
       "id": "7933837509",
@@ -48097,7 +48168,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:47:33+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935409251"
     },
     {
       "id": "7933691210",
@@ -48148,7 +48220,8 @@
       "auto_scored": true,
       "neighborhood_raw": "SOMA / south beach",
       "checked_at": "2026-05-31T18:47:34+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937258602"
     },
     {
       "id": "7933689430",
@@ -48254,7 +48327,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:47:36+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935409251"
     },
     {
       "id": "7933519765",
@@ -48353,7 +48427,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:47:39+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935409251"
     },
     {
       "id": "7933267269",
@@ -48722,7 +48797,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:47:45+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935409251"
     },
     {
       "id": "7932195894",
@@ -48826,7 +48902,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:47:48+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935409251"
     },
     {
       "id": "7932144662",
@@ -48877,7 +48954,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:47:48+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7932315153"
     },
     {
       "id": "7932032740",
@@ -48928,7 +49006,8 @@
       "auto_scored": true,
       "neighborhood_raw": "SOMA / south beach",
       "checked_at": "2026-05-31T18:47:50+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937258602"
     },
     {
       "id": "7931898698",
@@ -48979,7 +49058,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:47:50+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7932315153"
     },
     {
       "id": "7931816932",
@@ -51143,7 +51223,8 @@
       "auto_scored": true,
       "neighborhood_raw": "hayes valley",
       "checked_at": "2026-05-31T18:48:34+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937453310"
     },
     {
       "id": "7937370586",
@@ -51643,7 +51724,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Pacific Heights",
       "checked_at": "2026-05-31T18:48:44+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937576349"
     },
     {
       "id": "7937337642",
@@ -51880,7 +51962,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Nob Hill",
       "checked_at": "2026-05-31T18:48:50+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937566842"
     },
     {
       "id": "7937330546",
@@ -51930,7 +52013,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Nob Hill",
       "checked_at": "2026-05-31T18:48:52+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937566190"
     },
     {
       "id": "7936036300",
@@ -52355,7 +52439,8 @@
       "auto_scored": true,
       "neighborhood_raw": "hayes valley",
       "checked_at": "2026-05-31T18:48:59+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937453310"
     },
     {
       "id": "7937183240",
@@ -52512,7 +52597,8 @@
       "auto_scored": true,
       "neighborhood_raw": "hayes valley",
       "checked_at": "2026-05-31T18:49:03+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937453310"
     },
     {
       "id": "7937148966",
@@ -54813,7 +54899,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:49:48+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935442915"
     },
     {
       "id": "7934956382",
@@ -55076,7 +55163,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:49:53+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935442915"
     },
     {
       "id": "7933678769",
@@ -55178,7 +55266,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:49:54+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935442915"
     },
     {
       "id": "7933430415",
@@ -55282,7 +55371,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:49:57+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935442915"
     },
     {
       "id": "7933229233",
@@ -55486,7 +55576,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:50:01+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935442915"
     },
     {
       "id": "7932172101",
@@ -55537,7 +55628,8 @@
       "auto_scored": true,
       "neighborhood_raw": "nob hill",
       "checked_at": "2026-05-31T18:50:03+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7935442915"
     },
     {
       "id": "7931574210",
@@ -55643,7 +55735,8 @@
       "auto_scored": true,
       "neighborhood_raw": "richmond / seacliff",
       "checked_at": "2026-05-31T18:50:05+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7933430415"
     },
     {
       "id": "7937715550",
@@ -56987,7 +57080,8 @@
       "auto_scored": true,
       "neighborhood_raw": "pacific heights",
       "checked_at": "2026-05-31T18:50:32+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937392547"
     },
     {
       "id": "7937503395",
@@ -58203,7 +58297,8 @@
       "auto_scored": true,
       "neighborhood_raw": "pacific heights",
       "checked_at": "2026-05-31T18:50:57+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7936442553"
     },
     {
       "id": "7937329675",
@@ -58309,7 +58404,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Marina",
       "checked_at": "2026-05-31T18:50:59+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937563085"
     },
     {
       "id": "7937327366",
@@ -58499,7 +58595,8 @@
       "auto_scored": true,
       "neighborhood_raw": "Duboce Triangle",
       "checked_at": "2026-05-31T18:51:04+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937555176"
     },
     {
       "id": "7937296946",
@@ -59337,7 +59434,8 @@
       "auto_scored": true,
       "neighborhood_raw": "lower pac hts",
       "checked_at": "2026-05-31T18:51:20+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937452543"
     },
     {
       "id": "7937153529",
@@ -59390,7 +59488,8 @@
       "auto_scored": true,
       "neighborhood_raw": "hayes valley",
       "checked_at": "2026-05-31T18:51:22+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7937452430"
     },
     {
       "id": "7937153392",
@@ -61199,7 +61298,8 @@
       "auto_scored": true,
       "neighborhood_raw": "inner richmond",
       "checked_at": "2026-05-31T18:51:58+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7934333411"
     },
     {
       "id": "7934333245",
@@ -61252,7 +61352,8 @@
       "auto_scored": true,
       "neighborhood_raw": "inner richmond",
       "checked_at": "2026-05-31T18:51:59+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7934333411"
     },
     {
       "id": "7934331171",
@@ -61306,7 +61407,8 @@
       "auto_scored": true,
       "neighborhood_raw": "inner richmond",
       "checked_at": "2026-05-31T18:52:00+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7934333411"
     },
     {
       "id": "7934333411",
@@ -61412,7 +61514,8 @@
       "auto_scored": true,
       "neighborhood_raw": "inner richmond",
       "checked_at": "2026-05-31T18:52:02+00:00",
-      "link_status": "live"
+      "link_status": "live",
+      "duplicate_of": "7934333411"
     },
     {
       "id": "7934767741",
@@ -63083,7 +63186,8 @@
       "link_status": "live",
       "created_at": "2026-05-31T18:52:42+00:00",
       "updated_at": "2026-05-31T18:52:42+00:00",
-      "checked_at": "2026-05-31T18:53:11+00:00"
+      "checked_at": "2026-05-31T18:53:11+00:00",
+      "duplicate_of": "7937876712"
     },
     {
       "id": "7937851928",
@@ -63968,7 +64072,8 @@
       "link_status": "live",
       "created_at": "2026-05-31T18:52:42+00:00",
       "updated_at": "2026-05-31T18:52:42+00:00",
-      "checked_at": "2026-05-31T18:53:27+00:00"
+      "checked_at": "2026-05-31T18:53:27+00:00",
+      "duplicate_of": "7937861283"
     },
     {
       "id": "7937775260",
@@ -66916,7 +67021,8 @@
       "link_status": "live",
       "created_at": "2026-05-31T18:52:42+00:00",
       "updated_at": "2026-05-31T18:52:42+00:00",
-      "checked_at": "2026-05-31T18:54:27+00:00"
+      "checked_at": "2026-05-31T18:54:27+00:00",
+      "duplicate_of": "7937452487"
     },
     {
       "id": "7937798165",
