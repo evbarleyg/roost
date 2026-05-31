@@ -131,6 +131,8 @@ export function passes(
   catMap: Record<string, string>,
 ): boolean {
   const d = derive(l, s);
+  // Hide listings whose source link is dead (expired/deleted) unless asked to show them.
+  if (!f.show_expired && l.link_status === "dead") return false;
   if (f.rent_min != null && (l.rent == null || l.rent < f.rent_min)) return false;
   if (f.rent_max != null && (l.rent == null || l.rent > f.rent_max)) return false;
   if (f.sqft_min != null && (l.sqft == null || l.sqft < f.sqft_min)) return false;

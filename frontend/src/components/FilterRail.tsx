@@ -176,6 +176,9 @@ export function FilterRail() {
           <Toggle on={!!filter.pet_friendly} onClick={() => setFilter({ pet_friendly: !filter.pet_friendly })}>
             Pet-friendly
           </Toggle>
+          <Toggle on={!!filter.show_expired} onClick={() => setFilter({ show_expired: !filter.show_expired })}>
+            Show expired
+          </Toggle>
         </div>
       </Section>
 

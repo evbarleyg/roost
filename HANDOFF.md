@@ -20,14 +20,15 @@ into `db.json`:
 Re-scoring/adding listings is therefore a dev-session task, not a runtime feature.
 
 ## State of the data
-- **~1,210 Craigslist SF listings** in `db.json`, all in-SF, all with a link-out
-  `url` (the 4 original hand-made candidates have empty `url`).
-- **~573 deeply enriched** (beds/baths/sqft, photos, `listed_at` +
-  `days_on_market`, amenities). The other **633 are list-level only** — exact
-  predicate: `source == "Craigslist" AND listed_at IS null`.
-- **Model auto-scores applied**: 1,207 listings have an `auto` rater on
-  `ratings` (safety/value/quality/views/space). `scoring.py` uses `auto` only as a
-  fallback when neither human has rated; `ranked_by()` reports human/auto/none.
+- **1,306 listings** in `db.json` (1,302 Craigslist + 4 hand-made). Nearly all
+  deeply enriched (beds/baths/sqft, photos, `listed_at`, amenities).
+- **Liveness tracked** via `link_status` (`live` / `dead` / `unknown`) + `checked_at`.
+  Last refresh: ~1,072 live, ~130 dead (expired/deleted CL posts, hidden in the UI
+  by default — "Show expired" toggle reveals them).
+- **Every listing auto-scored**: `ratings.auto` (safety/value/quality/views/space) +
+  `auto_scored: true`. `scoring.py`/`scoring.ts` use `auto` only as a fallback when
+  no human rated; `ranked_by()` reports human/auto/none.
+- Neighborhoods normalized to **45 canonical** SF names; original in `neighborhood_raw`.
 
 ## Done recently
 - **git initialized** + baseline commit. `.gitignore` excludes `node_modules/`,
@@ -42,19 +43,22 @@ Re-scoring/adding listings is therefore a dev-session task, not a runtime featur
   cells keep the original interactive marker; multi-pin cells are a count badge
   that zooms into its members on click. `.roost-cluster` styles in `index.css`.
 
-## NEXT TASK / open follow-ups
-- **Backfill the 633 list-level listings** — BLOCKED. A test request to a CL
-  detail page returned **HTTP 403 (IP hard-blocked)**. Wait for the block to
-  clear (hours–days) or use a different IP/proxy. When clear, run a **targeted
-  in-place** backfill (NOT wholesale `enrich_all.mjs`): select
-  `source=="Craigslist" && !listed_at`, fill only missing fields, skip-on-failure
-  (idempotent), CONCURRENCY=2 + ~1.5s throttle, stop immediately on any 403/429.
-  Scraper scripts: `/tmp/collect_craigslist.mjs`, `/tmp/enrich_all.mjs`.
-- No API key needed anymore (see Architecture above). `backend/.env` is only for
-  optional paid directions providers; OSRM (default) needs none. `anthropic` /
-  `beautifulsoup4` in `backend/requirements.txt` are now unused — safe to drop.
-- **Move the CL collection script into the repo** (`/tmp/collect_craigslist.mjs`);
-  the enrichment one now lives at `backend/scripts/backfill_cl.mjs`.
+## Data-maintenance primitives (run ON A VPN — CL IP-blocks scraping)
+Two idempotent, throttled, block-aware scripts in `backend/scripts/`. The usual
+cycle is collect → refresh → auto-score:
+- **`collect_cl.mjs`** — discover NEW CL posts (9 price-band searches), dedupe
+  against existing ids, append new in-SF rows (list-level, neighborhoods
+  normalized via an embedded canonical map). ~9 light requests.
+- **`refresh_listings.mjs`** — one pass over CL listings: liveness-check (sets
+  `link_status`) + re-enrich missing fields. Flags: `--limit N`, `--fresh-within H`
+  (skip recently-checked — use after a collect to hit only new rows), `--dead-only`.
+  Note CL returns **HTTP 410** (not 404) for expired posts.
+- **Auto-scoring** new rows is done in a Claude Code session (see Architecture).
+
+## Open follow-ups
+- `anthropic` / `beautifulsoup4` in `backend/requirements.txt` are now unused — drop.
+- The auto-score workflow's index-range batching can double-score/skip; the run is
+  deduped + gap-filled by hand. Make the batching robust before reusing at scale.
 - The 4 original listings have empty `url` (don't link out) — decide keep/drop.
 
 ## Run it

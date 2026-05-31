@@ -70,6 +70,11 @@ export interface Listing {
   days_on_market?: number | null;
   // True when Claude auto-scored this listing (the `auto` ratings rater).
   auto_scored?: boolean;
+  // Liveness of the source link, set by the refresh script. Dead = expired/deleted
+  // (Craigslist 410/404). Hidden by default in the UI.
+  link_status?: "live" | "dead" | "unknown";
+  checked_at?: string;
+  dead_at?: string;
   created_at: string;
   updated_at: string;
 }
@@ -141,6 +146,8 @@ export interface FilterQuery {
   in_unit_laundry?: boolean;
   parking?: boolean;
   pet_friendly?: boolean;
+  // Dead/expired source links are hidden unless this is on.
+  show_expired?: boolean;
 }
 
 // A draft returned by POST /listings/extract.
