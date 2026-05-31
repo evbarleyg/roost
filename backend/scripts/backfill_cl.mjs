@@ -31,6 +31,11 @@ const LIMIT = limitArg !== -1 ? Number(process.argv[limitArg + 1]) : Infinity;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const jitter = () => BASE_DELAY + Math.floor(Math.random() * JITTER);
 const decode = (s) => (s || "").replace(/&amp;/g, "&").replace(/&#x27;|&#039;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#?\w+;/g, " ").trim();
+// Drop unpaired UTF-16 surrogates (e.g. an emoji whose pair got cut by a slice).
+// A lone surrogate is valid in a JS string but cannot encode to UTF-8, which
+// would 500 the API on every read. Keeps complete emoji pairs intact.
+const stripLoneSurrogates = (s) =>
+  (s || "").replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])/g, "").replace(/(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g, "");
 
 const AMEN = [
   [/w\/?d in unit|laundry in unit|washer.?dryer in/i, "in_unit_laundry"],
@@ -72,7 +77,7 @@ function parseDetail(h, title) {
   if (lat) o.lat = Number(lat);
   if (lng) o.lng = Number(lng);
   o.images = [...new Set((h.match(/https:\/\/images\.craigslist\.org\/[A-Za-z0-9_]+_600x450\.jpg/g) || []))].slice(0, 6);
-  o.body = decode(((h.match(/id="postingbody"[^>]*>([\s\S]*?)<\/section>/) || [])[1] || "").replace(/<[^>]+>/g, " ")).slice(0, 280);
+  o.body = stripLoneSurrogates(decode(((h.match(/id="postingbody"[^>]*>([\s\S]*?)<\/section>/) || [])[1] || "").replace(/<[^>]+>/g, " ")).slice(0, 280));
   const hay = (title + " " + housing + " " + h.slice(0, 20000)).toLowerCase();
   o.amenities = {};
   for (const [re, k] of AMEN) if (re.test(hay)) o.amenities[k] = true;
