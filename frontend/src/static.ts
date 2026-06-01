@@ -3,7 +3,7 @@
 // baked /data/*.json files and any edits (notes, status, saved filters, settings,
 // hides) persist to this browser's localStorage. So each visitor gets a private,
 // non-destructive overlay on the shared read-only snapshot.
-import type { Listing, SavedFilter, Settings, TagsResponse } from "./types";
+import type { Listing, RefreshSummary, SavedFilter, Settings, TagsResponse } from "./types";
 
 export const STATIC = import.meta.env.VITE_STATIC === "true";
 
@@ -86,4 +86,10 @@ export const staticApi = {
   recomputeCommute: async (): Promise<{ recomputed: number }> => ({ recomputed: 0 }),
 
   exportCsvUrl: () => "/data/listings.json", // CSV export is hidden in the static UI
+
+  // No backend on the static site, so refresh is always off (the button is hidden).
+  refreshStatus: async (): Promise<{ enabled: boolean }> => ({ enabled: false }),
+  refresh: async (): Promise<RefreshSummary> => {
+    throw new Error("Data refresh isn't available on the static site.");
+  },
 };

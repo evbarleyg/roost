@@ -103,6 +103,31 @@ function TopBar({
     { id: "cards", label: "Cards" },
     { id: "map", label: "Map" },
   ];
+
+  const refreshEnabled = useStore((s) => s.refreshEnabled);
+  const runRefresh = useStore((s) => s.runRefresh);
+  const [refreshing, setRefreshing] = useState(false);
+  const [refreshMsg, setRefreshMsg] = useState<string | null>(null);
+
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    setRefreshMsg(null);
+    try {
+      const r = await runRefresh();
+      const failed = r.steps.filter((s) => !s.ok).map((s) => s.step);
+      if (failed.length) {
+        console.warn("Refresh finished with step issues:", r.steps);
+        setRefreshMsg(`Issues in ${failed.join(", ")} · +${r.added}, ${r.listings_after} total`);
+      } else {
+        setRefreshMsg(`+${r.added} new · ${r.listings_after} total`);
+      }
+    } catch (e) {
+      setRefreshMsg(`Refresh failed: ${(e as Error).message}`);
+    } finally {
+      setRefreshing(false);
+    }
+  };
+
   return (
     <header className="flex items-center justify-between gap-2 border-b border-roost-line bg-roost-panel px-4 py-2.5">
       <div className="flex items-center gap-3">
@@ -132,6 +157,19 @@ function TopBar({
       </div>
 
       <div className="flex items-center gap-2">
+        {!STATIC && refreshEnabled && (
+          <>
+            {refreshMsg && <span className="hidden text-xs text-roost-muted lg:inline">{refreshMsg}</span>}
+            <button
+              className="btn"
+              onClick={handleRefresh}
+              disabled={refreshing}
+              title="Pull new Craigslist listings, dedupe, and re-score (runs on this machine; needs a VPN)"
+            >
+              {refreshing ? "Refreshing…" : "↻ Refresh"}
+            </button>
+          </>
+        )}
         {!STATIC && <a className="btn hidden sm:inline-flex" href={api.exportCsvUrl()}>Export CSV</a>}
         <button className="btn" onClick={onSettings} title="Settings">⚙</button>
       </div>

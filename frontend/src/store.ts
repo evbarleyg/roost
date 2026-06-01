@@ -3,7 +3,7 @@
 import { create } from "zustand";
 
 import { api } from "./api";
-import type { FilterQuery, Listing, SavedFilter, Settings, Tag } from "./types";
+import type { FilterQuery, Listing, RefreshSummary, SavedFilter, Settings, Tag } from "./types";
 
 export type ViewMode = "table" | "cards" | "map";
 
@@ -20,9 +20,11 @@ interface State {
   settingsOpen: boolean;
   loading: boolean;
   error: string | null;
+  refreshEnabled: boolean; // backend exposes the operator-only data refresh
 
   init: () => Promise<void>;
   refreshTags: () => Promise<void>;
+  runRefresh: () => Promise<RefreshSummary>;
   setFilter: (patch: Partial<FilterQuery>) => void;
   clearFilter: () => void;
   applySavedFilter: (q: FilterQuery) => void;
@@ -55,6 +57,7 @@ export const useStore = create<State>((set, get) => ({
   settingsOpen: false,
   loading: true,
   error: null,
+  refreshEnabled: false,
 
   init: async () => {
     set({ loading: true, error: null });
@@ -78,6 +81,15 @@ export const useStore = create<State>((set, get) => ({
       });
     } catch (e) {
       set({ loading: false, error: (e as Error).message });
+      return;
+    }
+    // Non-fatal: older backends (or the static build) lack /refresh — just hide
+    // the button if we can't reach it. Never let this blank the loaded app.
+    try {
+      const { enabled } = await api.refreshStatus();
+      set({ refreshEnabled: enabled });
+    } catch {
+      set({ refreshEnabled: false });
     }
   },
 
@@ -87,6 +99,19 @@ export const useStore = create<State>((set, get) => ({
       tags: tagsResp.tags,
       catMap: Object.fromEntries(tagsResp.tags.map((t) => [t.label, t.category])),
     });
+  },
+
+  runRefresh: async () => {
+    // Runs the backend pipeline, then reloads listings + tags WITHOUT touching the
+    // active filter/view (unlike init, which reseeds the filter to the defaults).
+    const summary = await api.refresh();
+    const [listings, tagsResp] = await Promise.all([api.listings(), api.tags()]);
+    set({
+      listings,
+      tags: tagsResp.tags,
+      catMap: Object.fromEntries(tagsResp.tags.map((t) => [t.label, t.category])),
+    });
+    return summary;
   },
 
   setFilter: (patch) => set({ filter: { ...get().filter, ...patch } }),

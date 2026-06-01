@@ -16,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 load_dotenv()  # pick up backend/.env (optional directions API keys; no LLM key needed)
 
 from . import store  # noqa: E402  (after load_dotenv so env is ready)
-from .routes import commute, export, listings, saved_filters, settings, tags  # noqa: E402
+from .routes import commute, export, listings, refresh, saved_filters, settings, tags  # noqa: E402
 
 app = FastAPI(title="Roost", version="0.1.0", description="Personal apartment-scouting app")
 
@@ -40,5 +40,5 @@ def health() -> dict:
     return {"status": "ok"}
 
 
-for r in (listings, tags, settings, saved_filters, commute, export):
+for r in (listings, tags, settings, saved_filters, commute, export, refresh):
     app.include_router(r.router)

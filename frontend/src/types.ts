@@ -152,6 +152,22 @@ export interface FilterQuery {
   show_expired?: boolean;
 }
 
+// Result of the operator-only incremental data refresh (POST /refresh).
+export interface RefreshStep {
+  step: string;
+  ok: boolean;
+  returncode: number | null;
+  tail: string;
+}
+
+export interface RefreshSummary {
+  ok: boolean;
+  listings_before: number;
+  listings_after: number;
+  added: number;
+  steps: RefreshStep[];
+}
+
 // A draft returned by POST /listings/extract.
 export interface ListingDraft {
   name: string;

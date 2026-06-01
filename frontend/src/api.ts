@@ -4,6 +4,7 @@
 import { STATIC, staticApi } from "./static";
 import type {
   Listing,
+  RefreshSummary,
   SavedFilter,
   Settings,
   TagsResponse,
@@ -58,6 +59,11 @@ const liveApi = {
     req<{ recomputed: number }>("/commute/recompute", { method: "POST" }),
 
   exportCsvUrl: () => `${BASE}/export.csv`,
+
+  // Operator-only incremental data refresh. refreshStatus() reports whether the
+  // backend has it enabled (so the UI can hide the button); refresh() runs it.
+  refreshStatus: () => req<{ enabled: boolean }>("/refresh"),
+  refresh: () => req<RefreshSummary>("/refresh", { method: "POST" }),
 };
 
 // One of these two is the live client; pick based on the build mode.
